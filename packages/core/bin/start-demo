@@ -1,0 +1,3 @@
+#/bin/sh
+FOLDER=${1:-_demo}
+webpack-dev-server --config $FOLDER/webpack.config.js --mode development

@@ -1,0 +1,13 @@
+{
+  "name": "js-demo",
+  "version": "0.0.1",
+  "description": "Helpers and Utilities for creating demos in JavaScript applications ",
+  "author": "danny.wieser@gmail.com",
+  "repository": "git@github.com:dannywieser/js-demo.git",
+  "license": "MIT",
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.3"
+  }
+}

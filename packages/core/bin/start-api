@@ -1,0 +1,3 @@
+#/bin/sh
+FOLDER=${1:-_data}
+cp $FOLDER/demo-base-data.json $FOLDER/demo && json-server --delay 600 --watch $FOLDER/demo/demo-base-data.json
