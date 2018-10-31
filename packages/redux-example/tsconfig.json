@@ -4,6 +4,6 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
-    "module": "commonjs"
+    "outDir": "dist"
   }
 }

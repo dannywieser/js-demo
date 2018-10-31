@@ -1,3 +1,4 @@
+import { ActionCreatorsMapObject, ActionCreator } from 'redux';
 import {
   actionAsync,
   INITIAL_ASYNC_STATE,
@@ -57,7 +58,7 @@ const todoIncompleteOptions = (todo: ITodo) => ({
 });
 const todoIncomplete = (todo: ITodo) => actionAsync(todoIncompleteOptions(todo), todo);
 
-export const actions: {[actionName: string]: Function} = {
+export const actions: ActionCreatorsMapObject = {
   todosList,
   todoAdd,
   todoDelete,

@@ -14,12 +14,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "jsx": "react",
-    "outDir": "dist"
+    "jsx": "react"
   },
-  "compileOnSave": false,
-  "include": ["src/**/*.ts"],
-  "compilerOptions": {
-    "outDir": "dist"
-  }
+  "compileOnSave": false
 }

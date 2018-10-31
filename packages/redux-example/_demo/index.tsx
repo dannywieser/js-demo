@@ -1,10 +1,14 @@
-import { configure, renderDemo } from 'redux-service-demo';
+import { ActionCreatorsMapObject } from 'redux';
+import { configure as demoConfigure, renderDemo } from '@js-demo/redux-service-demo';
+import { configure } from '../src/config';
 import * as todos from '../src/todos';
-import '../src/index.scss';
 
-configure({
+demoConfigure({
   useLogger: true,
   title: 'Redux Service Demo',
+});
+configure({
+  apiBasePath: 'https://jsonplaceholder.typicode.com'
 });
 
 const services = {
@@ -14,7 +18,7 @@ const services = {
     actions: todos.actions,
     forms: {
       fetchTodoById: ['id'],
-      addTodo: ['userId', 'title'],
+      todoAdd: ['userId', 'title'],
     },
   }
 };
