@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as log from 'loglevel';
-import { Provider } from 'react-redux';
 import { initializeDemoStore } from './redux';
 import { ReduxServiceDemo, IReduxServiceDemoProps } from '../components/ReduxServiceDemo';
 import { IReduxServiceList } from '../types';
@@ -38,11 +37,12 @@ export const renderDemo = (services: IReduxServiceList, container: HTMLElement) 
   const demoStore = initializeDemoStore(services);
   const params = getParams();
   initDemoLogging();
-  console.log(demoStore);
   ReactDOM.render(
-    (<Provider store={demoStore}>
-      <ReduxServiceDemo services={services} params={params} />
-    </Provider>),
+      <ReduxServiceDemo
+        services={services}
+        params={params}
+        store={demoStore}
+      />,
     container);
 
   return demoStore;

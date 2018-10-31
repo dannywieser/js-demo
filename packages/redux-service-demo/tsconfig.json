@@ -4,6 +4,6 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
-    "esModuleInterop": true
+    "outDir": "dist"
   }
 }

@@ -1,6 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as components from '../ActionForm.components';
-import services from '../../../_data/example-services';
+import services from '../../__tests__/example-services';
 
 test('returns the correct active action form fields, given a service object, service name and action type', () => {
   const result = components.getActiveActionForm(services, 'serviceA', 'typeB');

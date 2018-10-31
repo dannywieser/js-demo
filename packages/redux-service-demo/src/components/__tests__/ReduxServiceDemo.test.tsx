@@ -5,7 +5,7 @@ import {
   IReduxServiceDemoState,
   IReduxServiceDemoProps,
 } from '../ReduxServiceDemo';
-import services from '../../../_data/example-services';
+import services from '../../__tests__/example-services';
 
 jest.mock('../ActionForm');
 jest.mock('../ReduxServiceDemo.components', () => ({
@@ -19,9 +19,10 @@ jest.mock('../../config', () => ({
 }));
 
 function mountComponent(params = {}): ReactWrapper<IReduxServiceDemoProps, IReduxServiceDemoState, ReduxServiceDemo> {
-  return mount(<ReduxServiceDemo
-    services={services}
-    params={params} />
+  return mount(
+    <ReduxServiceDemo
+      services={services}
+      params={params} />
   );
 }
 

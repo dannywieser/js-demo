@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { initializeDemoStore } from '../redux';
 import { configure } from '../../config';
-import services from '../../../_data/example-services';
+import services from '../../__tests__/example-services';
 
 jest.mock('redux', () => ({
   createStore: jest.fn(),

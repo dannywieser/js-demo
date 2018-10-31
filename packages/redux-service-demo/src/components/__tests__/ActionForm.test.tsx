@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { ActionForm, IActionFormProps, IActionFormState } from '../ActionForm';
-import services from '../../../_data/example-services';
+import services from '../../__tests__/example-services';
 import { getActiveActionForm, getDefaultFormValues } from '../ActionForm.components';
 
 jest.mock('../ActionForm.components', () => ({

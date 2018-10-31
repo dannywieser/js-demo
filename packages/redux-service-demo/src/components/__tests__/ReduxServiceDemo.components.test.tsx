@@ -1,6 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as components from '../ReduxServiceDemo.components';
-import services from '../../../_data/example-services';
+import services from '../../__tests__/example-services';
 
 test('will render an action option select control', () => {
   const wrapper: ShallowWrapper = shallow(components.renderActionOption('theOption'));

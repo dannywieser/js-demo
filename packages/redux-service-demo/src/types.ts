@@ -2,7 +2,7 @@ import { ActionCreatorsMapObject } from 'redux';
 
 export interface IReduxServiceDefinition {
   reducer: Function;
-  types: { [typeKey: string]: string };
+  types: any;
   actions: ActionCreatorsMapObject;
   forms: { [formKey: string]: string[] };
 }
@@ -12,4 +12,8 @@ export interface IReduxServiceList {
 
 export interface IReduxServiceDemoParams {
   [paramKey: string]: string;
+}
+
+export interface IReduxServiceDemoStore {
+
 }

@@ -1,24 +1,33 @@
 {
-  "name": "redux-service-demo",
+  "name": "@js-demo/redux-service-demo",
   "version": "0.0.1",
   "description": "Demo Application for Redux Data Services",
   "main": "dist/index.js",
   "author": "danny.wieser@gmail.com",
   "license": "MIT",
+  "files": [
+    "dist/**/*.*",
+    "README.md"
+  ],
   "scripts": {
+    "clean": "rimraf dist coverage yarn-error.log",
     "build": "tsc",
     "start": "tsc -w",
     "lint": "tslint --project \".\"",
     "test": "jest --coverage"
   },
   "dependencies": {
+    "@material-ui/core": "^3.3.2",
     "autobind-decorator": "^2.1.0",
+    "emotion": "^9.2.12",
+    "json-formatter-js": "^2.2.1",
     "loglevel": "^1.6.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "typeface-roboto-mono": "^0.0.54",
     "url-search-params-polyfill": "^5.0.0"
   },
   "devDependencies": {
@@ -33,6 +42,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
     "ts-jest": "^23.10.4",
     "typescript": "^3.1.4"
   }
