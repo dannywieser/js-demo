@@ -1,4 +1,4 @@
-import { IReduxServiceDemoParams, IReduxServiceList } from '../types'
+import { IReduxServiceDemoParams, IReduxServiceList } from '../types';
 
 export function getDefaultFormValues(fieldNames: string[], params?: IReduxServiceDemoParams) {
   if (!fieldNames) {

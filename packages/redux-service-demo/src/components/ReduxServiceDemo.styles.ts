@@ -1,17 +1,13 @@
-import { css } from 'emotion';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-export const theme = createMuiTheme();
-
-export const actionForm = css({
-  padding: theme.spacing.unit * 2,
-  button: {
+export const styles = (theme: any) => ({
+  root: {
+    padding: theme.spacing.unit * 2,
+  },
+  dispatchButton: {
     marginTop: theme.spacing.unit,
-  }
+  },
+  stateMonitor: {
+    backgroundColor: '#303030',
+    color: '#ffb86c',
+    padding: theme.spacing.unit * 2,
+  },
 });
-
-export const state = css({
-  backgroundColor: '#303030',
-  color: '#ffb86c',
-  padding: theme.spacing.unit * 2,
-})

@@ -1,24 +1,16 @@
 import * as React from 'react';
 import autobind from 'autobind-decorator';
-import { ActionForm } from './ActionForm';
-import { config } from '../config';
 import { Store } from 'redux';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core';
-import { IReduxServiceList, IReduxServiceDemoParams, IReduxServiceDemoStore } from '../types';
 
-const StateMonitor = withStyles({
-  root: {
-    backgroundColor: '#303030',
-    color: '#ffb86c',
-    padding: theme.spacing.unit
-   }
-})(Paper);
+import { ActionForm } from './ActionForm';
+import { config } from '../config';
+import { IReduxServiceList, IReduxServiceDemoParams, IReduxServiceDemoStore } from '../types';
+import { StateMonitor } from './StateMonitor';
 
 export interface IReduxServiceDemoProps {
   services: IReduxServiceList;
@@ -67,7 +59,7 @@ export class ReduxServiceDemo extends React.Component <IReduxServiceDemoProps, I
         value={item}
         key={item}
         label={item}/>
-      )
+      ),
     );
   }
 
@@ -92,9 +84,7 @@ export class ReduxServiceDemo extends React.Component <IReduxServiceDemoProps, I
           store={store}
           params={params}
         />
-        <StateMonitor square>
-          <pre>{stateString}</pre>
-        </StateMonitor>
+        <StateMonitor stateString={stateString}/>
       </div>
     );
   }

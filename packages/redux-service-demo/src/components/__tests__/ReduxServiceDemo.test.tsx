@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import { Store } from 'redux';
 import {
   ReduxServiceDemo,
   IReduxServiceDemoState,
@@ -8,28 +9,34 @@ import {
 import services from '../../__tests__/example-services';
 
 jest.mock('../ActionForm');
-jest.mock('../ReduxServiceDemo.components', () => ({
-  ServiceTabs: (): any => null,
-  ActionSelect: (): any => null,
-  StateMonitor: (): any => null,
-  stateToString: (): any => 'stateToStringMock',
-}));
 jest.mock('../../config', () => ({
   config: { title: 'mocked title' },
 }));
+
+let store: Store<any>;
+
+beforeEach(() => {
+  store = {
+    getState: jest.fn(),
+    subscribe: jest.fn(),
+    dispatch: jest.fn(),
+    replaceReducer: jest.fn(),
+  };
+});
 
 function mountComponent(params = {}): ReactWrapper<IReduxServiceDemoProps, IReduxServiceDemoState, ReduxServiceDemo> {
   return mount(
     <ReduxServiceDemo
       services={services}
-      params={params} />
+      params={params}
+      store={store}/>
   );
 }
 
 describe('the ReduxServiceDemo class', () => {
   test('displays the page title based on the configuration', () => {
     const wrapper = mountComponent();
-    expect(wrapper.find('h1.title').text()).toBe('mocked title');
+    expect(wrapper.find('h4').text()).toBe('mocked title');
   });
 
   test('defaults activeService/activeType to first defined service, first type', () => {
@@ -40,7 +47,7 @@ describe('the ReduxServiceDemo class', () => {
 
   test('updates the state active service, type on a call to handleServiceSelect', () => {
     const wrapper = mountComponent();
-    wrapper.instance().handleServiceSelect({ target: { id: 'serviceB' } } as any);
+    wrapper.instance().handleServiceSelect({} as any, 'serviceB');
     expect(wrapper.state().activeService).toBe('serviceB');
     expect(wrapper.state().activeAction).toBe('typeD');
   });

@@ -37,13 +37,6 @@ export const renderDemo = (services: IReduxServiceList, container: HTMLElement) 
   const demoStore = initializeDemoStore(services);
   const params = getParams();
   initDemoLogging();
-  ReactDOM.render(
-      <ReduxServiceDemo
-        services={services}
-        params={params}
-        store={demoStore}
-      />,
-    container);
-
+  ReactDOM.render(<ReduxServiceDemo services={services} params={params} store={demoStore} />, container);
   return demoStore;
 };

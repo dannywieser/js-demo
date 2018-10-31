@@ -17,8 +17,10 @@ const services = {
     types: todos.types,
     actions: todos.actions,
     forms: {
-      fetchTodoById: ['id'],
-      todoAdd: ['userId', 'title'],
+      todoAdd: ['todo'],
+      todoDelete: ['id'],
+      todoComplete: ['todo'],
+      todoIncomplete: ['todo'],
     },
   }
 };

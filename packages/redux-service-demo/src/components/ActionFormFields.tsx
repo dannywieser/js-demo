@@ -25,4 +25,4 @@ export const ActionFormFields = ({ formFields, formValues, handleFieldUpdate }: 
     )) }
     </div>
   );
-}
+};

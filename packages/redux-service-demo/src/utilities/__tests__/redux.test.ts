@@ -3,11 +3,11 @@ import {
   createStore,
   applyMiddleware,
 } from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import reduxThunk from 'redux-thunk';
+import reduxLogger from 'redux-logger';
 import { initializeDemoStore } from '../redux';
 import { configure } from '../../config';
-import services from '../../__tests__/example-services';
+import exampleServices from '../../__tests__/example-services';
 
 jest.mock('redux', () => ({
   createStore: jest.fn(),
@@ -16,22 +16,22 @@ jest.mock('redux', () => ({
 }));
 
 const expectedReducers = {
-  serviceA: services.serviceA.reducer,
-  serviceB: services.serviceB.reducer,
+  serviceA: exampleServices.serviceA.reducer,
+  serviceB: exampleServices.serviceB.reducer,
 };
 
 test('creates a redux store with logging disabled using the provided state', () => {
   configure({ useLogger: false });
-  initializeDemoStore(services);
+  initializeDemoStore(exampleServices);
   expect(combineReducers).toHaveBeenCalledWith(expectedReducers);
-  expect(applyMiddleware).toHaveBeenCalledWith(thunk);
+  expect(applyMiddleware).toHaveBeenCalledWith(reduxThunk);
   expect(createStore).toHaveBeenCalled();
 });
 
 test('creates a redux store with logging enabled using the provided services object', () => {
   configure({ useLogger: true });
-  initializeDemoStore(services);
+  initializeDemoStore(exampleServices);
   expect(combineReducers).toHaveBeenCalledWith(expectedReducers);
-  expect(applyMiddleware).toHaveBeenCalledWith(thunk, logger);
+  expect(applyMiddleware).toHaveBeenCalledWith(reduxThunk, reduxLogger);
   expect(createStore).toHaveBeenCalled();
 });

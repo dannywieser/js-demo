@@ -1,33 +1,46 @@
 import * as React from 'react';
+import { Store } from 'redux';
 import { mount, ReactWrapper } from 'enzyme';
-import { ActionForm, IActionFormProps, IActionFormState } from '../ActionForm';
+import { ActionFormBase, IActionFormProps, IActionFormState } from '../ActionForm';
 import services from '../../__tests__/example-services';
-import { getActiveActionForm, getDefaultFormValues } from '../ActionForm.components';
+import { getActiveActionForm, getDefaultFormValues } from '../../utilities';
+import { styles } from '../ReduxServiceDemo.styles';
 
-jest.mock('../ActionForm.components', () => ({
-  ActionSubmitButton: (): any => null,
-  formInput: (): any => null,
+jest.mock('../../utilities', () => ({
   getActiveActionForm: jest.fn(),
   getDefaultFormValues: jest.fn(),
+  fieldValueForDisplay: jest.fn(),
+  parseFieldValue: jest.fn(),
 }));
 const getActiveActionFormMock = getActiveActionForm as jest.Mock;
 const getDefaultFormValuesMock = getDefaultFormValues as jest.Mock;
+const handleActionSelectMock = jest.fn();
+let store: Store<any>;
 
 beforeEach(() => {
-  global.console = { info: jest.fn() } as any;
+  //global.console = { info: jest.fn() } as any;
+  store = {
+    getState: jest.fn(),
+    subscribe: jest.fn(),
+    dispatch: jest.fn(),
+    replaceReducer: jest.fn(),
+  };
 });
 
 function createChangeEvent(id: string, value: any): React.ChangeEvent<HTMLInputElement> {
   return { target: { id, value } } as React.ChangeEvent<HTMLInputElement>;
 }
 
-function mountComponent(params = {}): ReactWrapper<IActionFormProps, IActionFormState, ActionForm> {
+function mountComponent(params = {}): ReactWrapper<IActionFormProps, IActionFormState, ActionFormBase> {
   return mount(
-    <ActionForm
+    <ActionFormBase
       services={services}
       params={params}
       activeService="serviceA"
       activeAction="typeD"
+      store={store}
+      handleActionSelect={handleActionSelectMock}
+      classes={styles as any}
     />,
   );
 }
