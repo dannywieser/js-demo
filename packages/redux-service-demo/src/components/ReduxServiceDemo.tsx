@@ -68,7 +68,7 @@ export class ReduxServiceDemo extends React.Component <IReduxServiceDemoProps, I
     const { activeService, activeAction, stateString } = this.state;
     return (
       <div>
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="default">
           <Toolbar>
             <Typography variant="h4" color="inherit">{config.title}</Typography>
           </Toolbar>

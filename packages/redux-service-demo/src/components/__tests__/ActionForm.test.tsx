@@ -3,7 +3,7 @@ import { Store } from 'redux';
 import { mount, ReactWrapper } from 'enzyme';
 import { ActionFormBase, IActionFormProps, IActionFormState } from '../ActionForm';
 import services from '../../__tests__/example-services';
-import { getActiveActionForm, getDefaultFormValues } from '../../utilities';
+import { getActiveActionForm, getDefaultFormValues, parseFieldValue } from '../../utilities';
 import { styles } from '../ReduxServiceDemo.styles';
 
 jest.mock('../../utilities', () => ({
@@ -14,11 +14,12 @@ jest.mock('../../utilities', () => ({
 }));
 const getActiveActionFormMock = getActiveActionForm as jest.Mock;
 const getDefaultFormValuesMock = getDefaultFormValues as jest.Mock;
+const parseFieldValueMock = parseFieldValue as jest.Mock;
 const handleActionSelectMock = jest.fn();
 let store: Store<any>;
 
 beforeEach(() => {
-  //global.console = { info: jest.fn() } as any;
+  global.console = { info: jest.fn() } as any;
   store = {
     getState: jest.fn(),
     subscribe: jest.fn(),
@@ -37,7 +38,7 @@ function mountComponent(params = {}): ReactWrapper<IActionFormProps, IActionForm
       services={services}
       params={params}
       activeService="serviceA"
-      activeAction="typeD"
+      activeAction="typeA"
       store={store}
       handleActionSelect={handleActionSelectMock}
       classes={styles as any}
@@ -66,19 +67,24 @@ describe('the ActionForm class', () => {
   test('will update the state field values on a call to handleFieldUpdate', () => {
     const wrapper = mountComponent();
     expect(wrapper.state().formValues.firstField).toBe('');
+    parseFieldValueMock.mockReturnValue('parsedFieldValue1');
     const changeEventOne = createChangeEvent('firstField', 'changedValue');
     wrapper.instance().handleFieldUpdate(changeEventOne);
 
+    parseFieldValueMock.mockReturnValue('parsedFieldValue2');
     const changeEventTwo = createChangeEvent('secondField', 'AnotherChangedValue');
     wrapper.instance().handleFieldUpdate(changeEventTwo);
 
-    expect(wrapper.state().formValues.firstField).toEqual('changedValue');
-    expect(wrapper.state().formValues.secondField).toEqual('AnotherChangedValue');
+    expect(parseFieldValueMock).toHaveBeenCalledWith('changedValue');
+    expect(parseFieldValueMock).toHaveBeenCalledWith('AnotherChangedValue');
+    expect(wrapper.state().formValues.firstField).toEqual('parsedFieldValue1');
+    expect(wrapper.state().formValues.secondField).toEqual('parsedFieldValue2');
   });
 
   test('handles the scenario when the value entered in a field can be converted to an object', () => {
     const wrapper = mountComponent();
     expect(wrapper.state().formValues.firstField).toBe('');
+    parseFieldValueMock.mockReturnValue({ foo: 'bar' });
     const changeEventOne = createChangeEvent('firstField', { "foo": "bar" });
     wrapper.instance().handleFieldUpdate(changeEventOne);
 
@@ -88,10 +94,9 @@ describe('the ActionForm class', () => {
   describe('on a call to handleSubmit', () => {
     test('will dispatch the action method with field value parameters', () => {
       const wrapper = mountComponent();
+      wrapper.state().formValues = { fieldA: 'value1', fieldB: 'value2' };
       wrapper.instance().handleSubmit();
-  //    expect(services.serviceA.actions.typeA.mock.calls).toHaveLength(1);
-    //  expect(services.serviceA.actions.typeA.mock.calls[0][0]).toEqual('value1');
-    // TODO: replace with mapDispatchToProps
+      expect(services.serviceA.actions.typeA).toHaveBeenCalledWith('value1', 'value2');
     });
 
     test('will reset state field values to defaults', () => {

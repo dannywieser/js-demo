@@ -3,7 +3,8 @@ module.exports = {
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx,js}',
     '!src/**/*.styles.{ts}',
-    '!src/config/*.{ts}'
+    '!src/config/*.{ts}',
+    '!src/**/__tests__/*'
   ],
   moduleFileExtensions: [
     'ts',
@@ -11,7 +12,7 @@ module.exports = {
     'js'
   ],
   testMatch: [
-    '**/__tests__/*.+(ts|tsx|js)'
+    '**/__tests__/*.test.+(ts|tsx|js)'
   ],
   globals: {
     'ts-jest': {

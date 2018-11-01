@@ -1,5 +1,5 @@
 import * as React from 'react';
-import log from 'loglevel';
+import loglevel from 'loglevel';
 import { Store } from 'redux';
 import autobind from 'autobind-decorator';
 import Button from '@material-ui/core/Button';
@@ -56,7 +56,8 @@ export class ActionFormBase extends React.Component <IActionFormProps, IActionFo
     const service = services[activeService];
     const actionDispatch = service.actions[activeAction];
     const params = Object.values(formValues);
-    log.info(`handleSubmit|${activeService}|${activeAction}|`, formValues);
+
+    loglevel.info(`handleSubmit|${activeService}|${activeAction}|`, formValues);
     store.dispatch(actionDispatch(...params));
 
     const resetFormValues = getDefaultFormValues(formFields);

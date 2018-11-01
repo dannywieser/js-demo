@@ -19,7 +19,6 @@ export const ActionFormFields = ({ formFields, formValues, handleFieldUpdate }: 
         value={fieldValueForDisplay(formValues[field])}
         placeholder={field}
         onChange={handleFieldUpdate}
-        variant="outlined"
         fullWidth={true}
       />
     )) }
