@@ -5,3 +5,10 @@ install:
   - yarn install
 before_script:
   - lerna bootstrap
+before_deploy:
+  - yarn pages-build
+deploy:
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    local-dir: gh-pages

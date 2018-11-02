@@ -8,10 +8,11 @@
   "scripts": {
     "test": "lerna run test && yarn lint",
     "lint": "lerna run lint",
-    "clean": "lerna run clean",
+    "clean": "rimraf gh-pages && lerna run clean",
     "build": "yarn clean && lerna run build",
     "release": "yarn test && yarn build && lerna publish",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "pages-build": "scripts/ghpages-build"
   },
   "dependencies": {
     "lerna": "^3.4.3"

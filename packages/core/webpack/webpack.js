@@ -1,3 +1,4 @@
+const path = require("path");
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const plugins = [
@@ -20,12 +21,12 @@ const resolve = { extensions: ['.js', '.ts', '.tsx', '.md'] };
 const config = config => ({ ...config, resolve, plugins, performance, module: { rules } });
 
 module.exports = {
-  demoConfig: (demoFolder = '_demo') => {
+  demoConfig: (demoFolder = '_demo', outpath = '') => {
     const relativePath = `./${demoFolder}`;
     // demo index file entry point
     const entry = `${relativePath}/index`;
     // location of output file
-    const output = { filename: './demo.js' };
+    const output = { path: outpath, filename: './demo.js' };
     const devServer = {
       historyApiFallback: {
         index: `${demoFolder}/index.html`

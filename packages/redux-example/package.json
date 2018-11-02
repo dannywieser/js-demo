@@ -6,7 +6,7 @@
   "author": "danny.wieser@gmail.com",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf dist coverage yarn-error.log",
+    "clean": "rimraf dist coverage yarn-error.log gh-pages",
     "build": "tsc",
     "start": "tsc -w",
     "lint": "tslint --project \".\"",
