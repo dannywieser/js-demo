@@ -17,6 +17,11 @@ The utilities here are focused on React and Redux, although some parts are not s
 * **[@js-demo/core](packages/core/README.md)**: simplified webpack configuration, components for rendering markdown documentation containing JSX
 * **[@js-demo/redux-service-demo](packages/redux-service-demo/README.md)**: Components for creating a demo of a Redux Data Service (note that this has a dependency on @js-demo/core)
 
-Examples
+## Examples
 * [@js-demo/react-example](packages/react-example/README.md): example React component to illustrate usage of the demo utilities
 * [@js-demo/redux-example](packages/redux-example/README.md): example Redux service to illustrate usage of the demo utilities.
+
+## Live Demos
+
+[Redux Example]: (https://dannywieser.github.io/js-demo/js-demo-redux-example/)
+[React Example]: (https://dannywieser.github.io/js-demo/js-demo-react-example/)

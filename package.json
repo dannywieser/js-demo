@@ -13,7 +13,7 @@
     "release": "yarn test && yarn build && lerna publish",
     "bootstrap": "lerna bootstrap",
     "package-install": "lerna exec yarn install",
-    "pages-build": "lerna run pages-build && ./verify"
+    "pages-build": "lerna run pages-build"
   },
   "dependencies": {
     "lerna": "^3.4.3"
