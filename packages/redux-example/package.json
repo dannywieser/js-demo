@@ -17,6 +17,6 @@
     "redux-service-util": "^1.0.7"
   },
   "devDependencies": {
-    "@js-demo/core": "^0.0.3"
+    "@js-demo/core": "^0.0.1"
   }
 }
