@@ -1,1 +1,1 @@
-module.exports = require('@js-demo/core/dist/utilities/webpack').demoConfig();
+module.exports = require('@js-demo/core/webpack/webpack').demoConfig();

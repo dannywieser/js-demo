@@ -6,14 +6,17 @@
   "author": "danny.wieser@gmail.com",
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf dist coverage yarn-error.log",
     "build": "tsc",
     "start": "tsc -w",
     "lint": "tslint --project \".\"",
     "test": "jest --coverage"
   },
   "dependencies": {
-    "@js-demo/core": "^0.0.3",
     "redux": "^4.0.1",
     "redux-service-util": "^1.0.7"
+  },
+  "devDependencies": {
+    "@js-demo/core": "^0.0.3"
   }
 }
