@@ -14,7 +14,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react",
+    "esModuleInterop": true
   },
   "compileOnSave": false
 }

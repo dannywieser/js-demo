@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as log from 'loglevel';
+import loglevel from 'loglevel';
 import { initializeDemoStore } from './redux';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ReduxServiceDemo, IReduxServiceDemoProps } from '../components/ReduxServiceDemo';
 import { IReduxServiceList } from '../types';
+import { demoTheme } from '../components/ReduxServiceDemo.styles';
 
 export const isJsonString = (str: string) => {
   try {
@@ -29,14 +31,18 @@ export function getParams() {
 }
 
 function initDemoLogging() {
-  log.setLevel('INFO');
-  log.info('[redux-service-demo:@VERSION@]');
+  loglevel.setLevel('INFO');
+  loglevel.info('[redux-service-demo:@VERSION@]');
 }
 
 export const renderDemo = (services: IReduxServiceList, container: HTMLElement) => {
   const demoStore = initializeDemoStore(services);
   const params = getParams();
   initDemoLogging();
-  ReactDOM.render(<ReduxServiceDemo services={services} params={params} store={demoStore} />, container);
+  ReactDOM.render(
+    <MuiThemeProvider theme={demoTheme}>
+      <ReduxServiceDemo services={services} params={params} store={demoStore} />
+    </MuiThemeProvider>,
+    container);
   return demoStore;
 };

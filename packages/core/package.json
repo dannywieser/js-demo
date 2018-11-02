@@ -1,6 +1,6 @@
 {
   "name": "@js-demo/core",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Utilities for creating demos of JavaScript applications",
   "main": "dist/index.js",
   "repository": {
@@ -11,18 +11,27 @@
   "license": "MIT",
   "bin": {
     "start-demo": "./bin/start-demo",
-    "start-api": "./bin/start-api"
+    "start-api": "./bin/start-api",
+    "bundle-demo": "./bin/bundle-demo"
   },
   "scripts": {
+    "clean": "rimraf dist coverage yarn-error.log",
     "build": "tsc",
     "start": "tsc -w",
     "lint": "tslint --project \".\"",
     "test": "jest --coverage"
   },
   "files": [
-    "dist/**/*.*"
+    "bin/**/*",
+    "dist/**/*.*",
+    "webpack/**/*.*",
+    "docker/**/*",
+    "README.md"
   ],
   "dependencies": {
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
     "json-server": "^0.14.0",
     "markdown-to-jsx": "^6.8.3",
     "react": "^16.5.2",
@@ -36,21 +45,5 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
   },
-  "devDependencies": {
-    "@types/enzyme": "^3.1.14",
-    "@types/enzyme-adapter-react-16": "^1.0.3",
-    "@types/jest": "^23.3.7",
-    "@types/react": "^16.4.18",
-    "@types/react-redux": "^6.0.9",
-    "@types/redux-logger": "^3.0.6",
-    "autobind-decorator": "^2.1.0",
-    "emotion": "^9.2.12",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.4",
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.11.0",
-    "typescript": "^3.1.3"
-  }
+  "gitHead": "98f9413f9406017b6ff9bfdfde4a4e36f7e3a037"
 }
