@@ -12,3 +12,4 @@ deploy:
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     local-dir: gh-pages
+    verbose: true
