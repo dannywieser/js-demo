@@ -1,11 +1,10 @@
-import { ActionCreatorsMapObject } from 'redux';
 import { configure as demoConfigure, renderDemo } from '@js-demo/redux-service-demo';
 import { configure } from '../src/config';
 import * as todos from '../src/todos';
 
 demoConfigure({
   useLogger: true,
-  title: 'Redux Service Demo',
+  title: 'Todos w/ @js-demo',
 });
 configure({
   apiBasePath: 'https://jsonplaceholder.typicode.com'

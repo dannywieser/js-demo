@@ -1,10 +1,10 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-export const defaultFont = 'Roboto Mono';
+export const fontFamily = '"Roboto Mono", "Roboto", "Helvetica", "Arial", sans-serif';
 
 export const demoTheme = createMuiTheme({
   typography: {
-    fontFamily: defaultFont,
+    fontFamily,
     useNextVariants: true,
   },
 });
@@ -21,7 +21,5 @@ export const styles = (theme: any) => ({
     color: '#ffb86c',
     padding: theme.spacing.unit * 2,
   },
-  stateBody: {
-    fontFamily: defaultFont,
-  },
+  stateBody: { fontFamily },
 });

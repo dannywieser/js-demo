@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "redux": "^4.0.1",
-    "redux-service-util": "^1.0.7"
+    "redux-service-util": "1.1.0"
   },
   "devDependencies": {
     "@js-demo/core": "^0.1.1",
