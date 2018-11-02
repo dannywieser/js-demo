@@ -23,5 +23,5 @@ The utilities here are focused on React and Redux, although some parts are not s
 
 ## Live Demos
 
-[Redux Example]: (https://dannywieser.github.io/js-demo/js-demo-redux-example/)
-[React Example]: (https://dannywieser.github.io/js-demo/js-demo-react-example/)
+[Redux Example](https://dannywieser.github.io/js-demo/js-demo-redux-example/)
+[React Example](https://dannywieser.github.io/js-demo/js-demo-react-example/)
