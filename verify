@@ -1,2 +1,2 @@
 echo $PWD
-find .
+find . -name gh-pages
