@@ -1,2 +1,2 @@
 echo $PWD
-find . -name gh-pages
+find . -name demo.js
