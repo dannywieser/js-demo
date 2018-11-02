@@ -1,5 +1,5 @@
 {
-  "name": "redux-example",
+  "name": "@js-demo/redux-example",
   "version": "0.0.1",
   "description": "Example Redux Data Service utilizing @demo-utils/core and @demo-utils/redux-service-demo",
   "main": "dist/index.js",
@@ -15,14 +15,5 @@
     "@js-demo/core": "^0.0.3",
     "redux": "^4.0.1",
     "redux-service-util": "^1.0.7"
-  },
-  "devDependencies": {
-    "@types/jest": "^23.3.8",
-    "file-loader": "^2.0.0",
-    "jest": "^23.6.0",
-    "redux-service-demo": "^1.1.20",
-    "ts-jest": "^23.10.4",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.3"
   }
 }
