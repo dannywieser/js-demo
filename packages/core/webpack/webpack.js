@@ -14,6 +14,16 @@ const rules = [
   { test: /\.svg$/, use: 'svg-inline-loader' },
   { test: /\.css/, use: 'css-loader' },
   { test: /globalize|moment-cldr/, loader: 'imports-loader?define=>false' },
+  {
+    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+    use: [{
+        loader: 'file-loader',
+        options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+        }
+    }]
+  }
 ];
 const performance = { hints: false };
 const resolve = { extensions: ['.js', '.ts', '.tsx', '.md'] };
