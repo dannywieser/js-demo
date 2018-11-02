@@ -4,7 +4,7 @@ node_js:
 install:
   - yarn install
 before_script:
-  - lerna bootstrap
+  - yarn package-install
 before_deploy:
   - yarn pages-build
 deploy:

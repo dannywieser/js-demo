@@ -12,6 +12,7 @@
     "build": "yarn clean && lerna run build",
     "release": "yarn test && yarn build && lerna publish",
     "bootstrap": "lerna bootstrap",
+    "package-install": "lerna exec yarn install",
     "pages-build": "lerna run pages-build"
   },
   "dependencies": {
