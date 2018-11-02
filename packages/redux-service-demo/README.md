@@ -1,14 +1,6 @@
 # redux-service-demo
 A React UI for testing Redux Service components without the need to integrate them into a large application
 
-[![Build Status](https://travis-ci.org/dannywieser/redux-service-demo.svg?branch=master)](https://travis-ci.org/dannywieser/redux-service-demo)
-
-See the demo here: https://dannywieser.github.io/redux-service-demo/
-
-Demo uses the fake todos api available here: http://jsonplaceholder.typicode.com/
-
-Demo also uses the redux-service-utils from here to reduce boilerplate in the async service code: https://github.com/dannywieser/redux-service-util
-
 ## Overview
 
 A Redux Data Service is a Redux wrapper for an API that maps API functionality to Redux Actions.
@@ -23,13 +15,12 @@ This demo application allows testing of each individual Redux Service in a simpl
 
 Add as a project dependency
 
-`yarn install redux-service-demo --dev`
+`yarn install @js-demo/redux-service-demo --dev`
 
 Import the necessary functions (and CSS if desired)
 
 ```javascript
   import { configure, renderDemo } from 'redux-service-demo';
-  import 'redux-service-demo/styles/index.css';
 ```
 
 Configure if you want to use redux logging and the application title
