@@ -21,12 +21,12 @@ const resolve = { extensions: ['.js', '.ts', '.tsx', '.md'] };
 const config = config => ({ ...config, resolve, plugins, performance, module: { rules } });
 
 module.exports = {
-  demoConfig: (demoFolder = '_demo', outpath = '') => {
+  demoConfig: (demoFolder = '_demo', outpath = null) => {
     const relativePath = `./${demoFolder}`;
     // demo index file entry point
     const entry = `${relativePath}/index`;
     // location of output file
-    const output = { path: outpath, filename: './demo.js' };
+    const output = outpath != null ? { path: outpath, filename: './demo.js' } : { filename: './demo.js' };
     const devServer = {
       historyApiFallback: {
         index: `${demoFolder}/index.html`

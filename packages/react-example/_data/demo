@@ -1,0 +1,1 @@
+module.exports = require('@bb-ui/demo-utils/webpack/webpack-demo').demoConfig();
