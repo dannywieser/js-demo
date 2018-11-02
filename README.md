@@ -1,4 +1,5 @@
 # @js-demo
+[![Build Status](https://travis-ci.org/dannywieser/js-demo.svg?branch=master)](https://travis-ci.org/dannywieser/js-demo)
 
 Helpers and Utilities for creating demos in JavaScript applications.
 
