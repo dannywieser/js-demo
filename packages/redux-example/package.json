@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "tsc -w",
     "lint": "tslint --project \".\"",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "pages-build": "bundle-demo"
   },
   "files": [
     "dist/**/*.js",

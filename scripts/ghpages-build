@@ -1,9 +1,0 @@
-#!/bin/bash
-
-rm -rf gh-pages
-mkdir gh-pages
-
-mkdir gh-pages/js-demo-redux-example
-cd packages/redux-example
-yarn bundle-demo
-mv gh-pages/* ../../gh-pages/js-demo-redux-example

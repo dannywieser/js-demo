@@ -12,7 +12,7 @@
     "build": "yarn clean && lerna run build",
     "release": "yarn test && yarn build && lerna publish",
     "bootstrap": "lerna bootstrap",
-    "pages-build": "scripts/ghpages-build"
+    "pages-build": "lerna run pages-build"
   },
   "dependencies": {
     "lerna": "^3.4.3"
