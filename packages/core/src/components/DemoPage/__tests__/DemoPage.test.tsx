@@ -51,14 +51,16 @@ describe('component initialization and markdown loading', () => {
     mountComponent('MyComponentName');
     expect(loadMarkdownMock).toHaveBeenCalledWith(`${srcFolderTest}/MyComponentName/README.md`);
   });
-  it('should set the markdown text in the component state', async () => {
+  it('should set the markdown text in the component state', async (done) => {
     const wrapper = await mountComponent('MyComponentName');
     const { markdown } = wrapper.state();
+    done();
     expect(markdown).toEqual(markDownText);
   });
-  it('should set the markdown options in the component state', async () => {
+  it('should set the markdown options in the component state', async (done) => {
     const wrapper = await mountComponent('MyComponentName');
     const { options } = wrapper.state();
+    done();
     expect(options).toEqual(demoOpts);
   });
 });

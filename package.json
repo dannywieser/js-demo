@@ -10,7 +10,8 @@
     "lint": "lerna run lint",
     "clean": "lerna run clean",
     "build": "yarn clean && lerna run build",
-    "release": "yarn test && yarn build && lerna publish"
+    "release": "yarn test && yarn build && lerna publish",
+    "bootstrap": "lerna bootstrap"
   },
   "dependencies": {
     "lerna": "^3.4.3"
