@@ -9,7 +9,7 @@ export interface IStateMonitorProps extends StyledComponentProps {
 
 export const StateMonitorBase = ({ stateString, classes } : IStateMonitorProps) => (
   <Paper square className={classes.stateMonitor}>
-    <pre>{stateString}</pre>
+    <pre className={classes.stateBody}>{stateString}</pre>
   </Paper>
 );
 
