@@ -12,11 +12,16 @@
     "lint": "tslint --project \".\"",
     "test": "jest --coverage"
   },
+  "files": [
+    "dist/**/*.js",
+    "README.md"
+  ],
   "dependencies": {
     "redux": "^4.0.1",
     "redux-service-util": "^1.0.7"
   },
   "devDependencies": {
     "@js-demo/core": "^0.0.1"
-  }
+  },
+  "gitHead": "f19a35c5ff53dd5ddc4c18b6006a7b6cc5c41997"
 }
