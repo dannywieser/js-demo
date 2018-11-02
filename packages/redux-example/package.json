@@ -18,7 +18,8 @@
   ],
   "dependencies": {
     "redux": "^4.0.1",
-    "redux-service-util": "1.1.0"
+    "redux-service-util": "1.1.0",
+    "webpack-bundle-analyzer": "^3.0.3"
   },
   "devDependencies": {
     "@js-demo/core": "^0.1.1",

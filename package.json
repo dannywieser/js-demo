@@ -6,10 +6,11 @@
   "repository": "git@github.com:dannywieser/js-demo.git",
   "license": "MIT",
   "scripts": {
-    "test": "lerna run test",
+    "test": "lerna run test && yarn lint",
     "lint": "lerna run lint",
     "clean": "lerna run clean",
-    "build": "lerna run build"
+    "build": "yarn clean && lerna run build",
+    "release": "yarn test && yarn build && lerna publish"
   },
   "dependencies": {
     "lerna": "^3.4.3"
