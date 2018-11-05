@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { StyledComponentProps, withStyles } from '@material-ui/core';
 import { getActiveActionForm, getDefaultFormValues, parseFieldValue } from '../utilities';
 import { ActionFormFields } from './ActionFormFields';
-import { IReduxServiceList, IReduxServiceDemoParams, IReduxServiceDemoStore } from '../types';
+import { IReduxServiceList, IReduxServiceDemoParams } from '../types';
 import { styles } from './ReduxServiceDemo.styles';
 
 export interface IActionFormProps extends StyledComponentProps {
@@ -18,7 +18,7 @@ export interface IActionFormProps extends StyledComponentProps {
   activeAction: string;
   services: IReduxServiceList;
   params: IReduxServiceDemoParams;
-  store: Store<IReduxServiceDemoStore>;
+  store: Store<any>;
   handleActionSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 

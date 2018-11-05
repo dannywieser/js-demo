@@ -109,7 +109,7 @@ Example:
 
 ### DemoPage
 
-Given the structure above, you can setup your _demo/index.tsx to render a demo page with component navigation using the ***ComponentDemo*** component
+Given the structure above, you can setup your _demo/index.tsx to render a demo page with component navigation using the ***DemoPage*** component
 
 This component will render a demo page for one or more components, given the following props:
 * components: a js module containing all of the components that should be included in the demo navigation.
@@ -135,11 +135,11 @@ render(<DemoPage
 
 ### ReduxDemoPage
 
-Same usage as ComponentDemo, but for usage when a Redux store is required for one or more of the components included in the demo.
+Same usage as DemoPage, but for usage when a Redux store is required for one or more of the components included in the demo.
 
 #### Sub Components
 
-The ComponentDemo component has the following child components that are used to render the demo page:
+The DemoPage component has the following child components that are used to render the demo page:
 
 ***DemoPageNav***
 

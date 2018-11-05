@@ -8,13 +8,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { ActionForm } from './ActionForm';
 import { config } from '../config';
-import { IReduxServiceList, IReduxServiceDemoParams, IReduxServiceDemoStore } from '../types';
+import { IReduxServiceList, IReduxServiceDemoParams } from '../types';
 import { StateMonitor } from './StateMonitor';
 
 export interface IReduxServiceDemoProps {
   services: IReduxServiceList;
   params: IReduxServiceDemoParams;
-  store: Store<IReduxServiceDemoStore>;
+  store: Store<any>;
 }
 
 export interface IReduxServiceDemoState {

@@ -13,7 +13,3 @@ export interface IReduxServiceList {
 export interface IReduxServiceDemoParams {
   [paramKey: string]: string;
 }
-
-export interface IReduxServiceDemoStore {
-
-}

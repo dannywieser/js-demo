@@ -1,4 +1,5 @@
 # redux-service-demo
+
 A React UI for testing Redux Service components without the need to integrate them into a large application
 
 ## Overview
@@ -58,7 +59,17 @@ A Redux Data Service/State would typically consist of:
 * an enumerated set of types available for the state
 * a map of types to action function implementations
 
-The services object expected by this application uses those properties, with the addition of another property representing an array of parameters expected by each action function (i.e. form fields in the application).
+The services object expected by this application uses those properties, with the addition of one extra property representing an array of parameters expected by each action function (i.e. form fields in the application):
+
+For example, a service for managing todos might have an action to add a new todo ```addTodo```, that accepts a parameter of the new todo object. To configure the demo application to allow input of a JSON value representing this new TODO, the following service configuration would be required:
+
+```
+forms: {
+  addTodo: ['todoJSON']
+}
+```
+
+Any number of fields can be defined, based on the parameters passed to the action.
 
 Actions will be triggered with a Redux dispatch, with all form fields being passed as individual parameters to the action function.
 
@@ -68,23 +79,23 @@ Example:
 
 ```
 {
-  serviceA: {
+  todos: {
     reducer: ...
     types: ...
     actions: ...
-    forms: [
-      action1: ['field1A'],
-      action2: ['field2A']
-    ]
+    forms: {
+      addTodo: ['todoJSON'],
+      deleteTodo: ['todoToDeleteId']
+    }
   },
   serviceB: {
     reducer: ...
     types: ...
     actions: ...
-    forms: [
+    forms: {
       actionA: ['fieldA1'],
       actionB: ['fieldB1']
-    ]
+    }
   },  
 }
 ```
