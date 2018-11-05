@@ -28,5 +28,5 @@
     "redux-thunk": "^2.3.0",
     "url-search-params-polyfill": "^5.0.0"
   },
-  "gitHead": "98f9413f9406017b6ff9bfdfde4a4e36f7e3a037"
+  "gitHead": "a4518e2f44233f86d3a83e3630293a349be01876"
 }

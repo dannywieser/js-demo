@@ -34,5 +34,5 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
-  "gitHead": "98f9413f9406017b6ff9bfdfde4a4e36f7e3a037"
+  "gitHead": "a4518e2f44233f86d3a83e3630293a349be01876"
 }
