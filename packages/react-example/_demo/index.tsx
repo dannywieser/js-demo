@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { ReduxDemoPage, demoStore } from '@js-demo/core';
+import { ReduxDemoPage, demoStore } from '@js-demo/demopage';
 import { todos, configure } from '@js-demo/redux-example';
 import * as components from '../src/';
 
@@ -12,7 +12,6 @@ render(
   <ReduxDemoPage
     components={components}
     srcFolder={'src/components'}
-    localeFolder={'locales'}
     readme={'README.md'}
     title={title}
     store={store}
