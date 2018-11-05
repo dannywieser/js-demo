@@ -16,30 +16,23 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@js-demo/core@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@js-demo/core/-/core-0.1.3.tgz#c4c5cb55510c440feb744d7e645b210d1c0dec97"
-  integrity sha512-TnZ+HRD7qrKJ+ZKPyHXqCxf8e44zBfLFTSO55kTkimL9GXV7ailx5GU+fPezMDBLOGoxI1SOEKqiVC5q3aNQjA==
+"@js-demo/core@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@js-demo/core/-/core-0.2.0.tgz#211bbdd62a947de9c95cc5a79593a58ab388aca0"
+  integrity sha512-30HseyvOSQYv5+FSF4HAgDjQohhbLKNmXjiUkFGb90EaNyr1cucH5XkIX07yJJtlU4UlyYFo6YnRlngoWYRc1Q==
   dependencies:
     copy-webpack-plugin "^4.6.0"
     css-loader "^1.0.1"
     json-server "^0.14.0"
-    markdown-to-jsx "^6.8.3"
-    react "^16.5.2"
-    react-dom "^16.6.0"
-    react-redux "^5.1.0"
-    redux "^4.0.1"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.3.0"
     ts-loader "^5.2.2"
     webpack "^4.22.0"
     webpack-cli "^3.1.2"
     webpack-dev-server "^3.1.9"
 
-"@js-demo/redux-service-demo@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@js-demo/redux-service-demo/-/redux-service-demo-0.1.3.tgz#2b7dc87c498aaa0161e049b24c49a2469ebddbe9"
-  integrity sha512-BDws0SIdkJwPjnQQZV8s9awdqQISiN1+vdZhrQbQKuInAVscdWHpW7eOnOYfw0AXVSZf1CRuq+vuvBgofOPfgQ==
+"@js-demo/redux-service-demo@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@js-demo/redux-service-demo/-/redux-service-demo-0.2.0.tgz#4ce4138e0ad3c84d046f958a3b7e1d6dde4f5c1f"
+  integrity sha512-64aW2mafpPg65Q5stJUilDm3xKRPJk6migYAZypTyeymm6chY3Ut7lSalOnHcunlSginONfSF+NgdZfhlDJqoA==
   dependencies:
     "@material-ui/core" "^3.3.2"
     autobind-decorator "^2.1.0"
@@ -2882,14 +2875,6 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-to-jsx@^6.8.3:
-  version "6.8.3"
-  resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-6.8.3.tgz#c9c157e50ba680626700ffd2452bd01eb909eb7d"
-  integrity sha512-I/kRZDvHFMEoKCjFS119v6Op4R1wZJEUEwhWSNtsE7WHRVcxKrLZ9vApvNb1j80MAFIY4/e4m1f4vIwSgKUZ8g==
-  dependencies:
-    prop-types "^15.6.2"
-    unquote "^1.1.0"
-
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -3891,7 +3876,7 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.5.2, react@^16.6.0:
+react@^16.6.0:
   version "16.6.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.6.0.tgz#b34761cfaf3e30f5508bc732fb4736730b7da246"
   integrity sha512-zJPnx/jKtuOEXCbQ9BKaxDMxR0001/hzxXwYxG8septeyYGfsgAei6NgfbVgOhbY1WOP2o3VPs/E9HaN+9hV3Q==
@@ -4767,11 +4752,6 @@ unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
-
-unquote@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/unquote/-/unquote-1.1.1.tgz#8fded7324ec6e88a0ff8b905e7c098cdc086d544"
-  integrity sha1-j97XMk7G6IoP+LkF58CYzcCG1UQ=
 
 unset-value@^1.0.0:
   version "1.0.0"

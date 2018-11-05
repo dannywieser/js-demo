@@ -5,7 +5,7 @@ import * as styles from './TodoList.styles';
 import { connect } from 'react-redux';
 import { todos, IApiState } from '@js-demo/redux-example';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { TodoItem, AddNewTodoItem, CenteredSpinner } from './TodoList.functional';
+import { TodoItem, AddNewTodoItem  } from './TodoList.functional';
 
 interface ITodoListProps {
   todosArray: todos.ITodo[];

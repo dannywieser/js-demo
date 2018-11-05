@@ -2,16 +2,21 @@ export interface IComponentModule {
   [moduleName: string]: Function;
 }
 
+export interface IComponentOverrides {
+  [component: string]: Function;
+}
+
 export interface IMarkdownOpts {
   overrides: {
     [component: string]: Function;
   };
 }
 
-// build markdown-to-jsx options based on an active component
-export const buildOpts = (components: IComponentModule, activeComponent: string): IMarkdownOpts => ({
-  overrides: { [activeComponent]: components[activeComponent] },
-});
+export const buildOpts = (components: IComponentModule): IMarkdownOpts => {
+  const componentsReducer = (overrides: IComponentOverrides, component: string) => ({ ...overrides, [component]: components[component] });
+  const overrides = Object.keys(components).reduce(componentsReducer, {});
+  return { overrides };
+};
 
 export const fetchText = async (path: string, errorString = 'error') => {
   let text = '';

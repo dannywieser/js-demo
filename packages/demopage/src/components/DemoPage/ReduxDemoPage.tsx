@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
 import * as React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import { DemoPage, IDemoPageProps } from './DemoPage';
 
 export interface IReduxDemoPageProps extends IDemoPageProps {
@@ -9,12 +10,14 @@ export interface IReduxDemoPageProps extends IDemoPageProps {
 export const ReduxDemoPage = ({ srcFolder, readme, components, title, store }: IReduxDemoPageProps) => {
   return (
     <Provider store={store}>
-      <DemoPage
-        components={components}
-        srcFolder={srcFolder}
-        readme={readme}
-        title={title}
-      />
+      <Router>
+        <DemoPage
+          components={components}
+          srcFolder={srcFolder}
+          readme={readme}
+          title={title}
+        />
+      </Router>
     </Provider>
   );
 };

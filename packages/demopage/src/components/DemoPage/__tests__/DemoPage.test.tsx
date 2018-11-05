@@ -1,13 +1,17 @@
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
-import { DemoPage, IDemoPageProps, IDemoPageState } from '../DemoPage';
+import { DemoPageBase, IDemoPageProps, IDemoPageState } from '../DemoPage';
 import { loadMarkdown, buildOpts, getComponentHref } from '../../../utilities';
+import { styles} from '../DemoPage.styles';
 
-jest.mock('../DemoPageNav', () => ({
-  DemoPageNav: (): any => null,
+jest.mock('../DemoPageNavDrawer', () => ({
+  DemoPageNavDrawer: (): any => null,
 }));
-jest.mock('../DemoPageViewSource', () => ({
-  DemoPageViewSource: (): any => null,
+jest.mock('../DemoViewSourceDrawer', () => ({
+  DemoViewSourceDrawer: (): any => null,
+}));
+jest.mock('../DemoMarkdown', () => ({
+  DemoMarkdown: (): any => null,
 }));
 jest.mock('../../../utilities/markdown', () => ({
   loadMarkdown: jest.fn(),
@@ -25,13 +29,14 @@ const markDownText = 'some markdown text';
 const demoTitle = 'My Demo Title';
 const demoOpts = { MyComponentName: (): any => null };
 
-const mountComponent = (href = ''): ReactWrapper<IDemoPageProps, IDemoPageState, DemoPage> => {
+const mountComponent = (href = ''): ReactWrapper<IDemoPageProps, IDemoPageState, DemoPageBase> => {
   getComponentHrefMock.mockReturnValue(href);
-  return mount(<DemoPage
+  return mount(<DemoPageBase
     components={testComponents}
     srcFolder={srcFolderTest}
     readme={'./README.md'}
     title={demoTitle}
+    classes={styles as any}
   />);
 };
 
@@ -68,11 +73,11 @@ it('should set the Component Demo title', () => {
   const wrapper = mountComponent();
   expect(wrapper.find('h1').text()).toEqual(demoTitle);
 });
-it('should toggle the sourceVisible flag on invocation of the toggleSource function', () => {
+it('should toggle the sourceVisible flag on invocation of the toggleEdit function', () => {
   const wrapper = mountComponent();
-  expect(wrapper.state().sourceVisible).toBeFalsy();
-  wrapper.instance().toggleSource();
-  expect(wrapper.state().sourceVisible).toBeTruthy();
+  expect(wrapper.state().editOpen).toBeFalsy();
+  wrapper.instance().toggleEdit();
+  expect(wrapper.state().editOpen).toBeTruthy();
 });
 it('should update the markdown state on invocation of the handleMarkdownChange function', () => {
   const wrapper = mountComponent();

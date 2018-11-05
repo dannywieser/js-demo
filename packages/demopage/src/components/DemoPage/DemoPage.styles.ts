@@ -1,59 +1,116 @@
-import { css } from 'emotion';
+const menuDrawerWidth = 240;
+const sourceDrawerWidth = 340;
 
-export const padding = '10px';
+const viewSourceColor = {
+  backgroundColor: '#303030',
+  color: '#ffb86c',
+};
 
-export const componentTitle = css({
+const drawerTransition = (theme: any) => {
+  return theme.transitions.create('margin', {
+    easing: theme.transitions.easing.easeOut,
+    duration: theme.transitions.duration.enteringScreen,
+  });
+};
 
-});
-
-export const demoWrap = css`
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  h1 {
-    margin: 0;
-  }
-`;
-
-export const demoContent = css({
-  padding,
-  flex: 1,
-});
-
-export const demoBody = css({
+const drawerHeader = (theme: any) => ({
   display: 'flex',
-  flex: 1,
-});
+  alignItems: 'center',
+  padding: '0 8px',
+  ...theme.mixins.toolbar,
+})
 
-export const demoNav = css({
-  order: -1,
-  flex: '0 0 12em',
-  borderRight: '1px solid blue',
-  ul: {
-    padding,
+export const styles = (theme: any) => ({
+  root: {
+    display: 'flex',
   },
-  li: {
-    listStyleType: 'none',
+  appBar: {
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
-});
-
-export const demoSource = css({
-  padding,
-  flex: '0 0 30em',
-  backgroundColor: 'white',
-  color: 'green',
-  textarea: {
-    backgroundColor: 'white',
-    color: 'green',
+  appBarShift: {
+    width: `calc(100% - ${menuDrawerWidth}px)`,
+    marginLeft: menuDrawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20,
+  },
+  hide: {
+    display: 'none',
+  },
+  menuDrawer: {
+    width: menuDrawerWidth,
+    flexShrink: 0,
+  },
+  noPadding: {
+    padding: 0,
+  },
+  drawerPaper: {
+    width: menuDrawerWidth,
+  },
+  drawerHeaderLeft: {
+    ...drawerHeader(theme),
+    justifyContent: 'flex-end',
+  },
+  drawerHeader: {
+    ...drawerHeader(theme),
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -menuDrawerWidth,
+    marginRight: -sourceDrawerWidth,
+  },
+  contentShiftMenu: {
+    transition: drawerTransition(theme),
+    marginLeft: 0,
+    marginRight: -sourceDrawerWidth,
+  },
+  contentShiftSource: {
+    transition: drawerTransition(theme),
+    marginLeft: -menuDrawerWidth,
+    marginRight: 0,
+  },
+  contentShiftBoth: {
+    transition: drawerTransition(theme),
+    marginLeft: 0,
+    marginRight: 0,
+  },
+  sourceDrawer: {
+    width: sourceDrawerWidth,
+    flexShrink: 0,
+  },
+  drawerSource: {
+    width: sourceDrawerWidth,
+  },
+  demoSourceContainer: {
+    ...viewSourceColor,
+    padding: theme.spacing.unit * 2,
+    height: '100%',
+  },
+  demoSource: {
+    ...viewSourceColor,
     width: '100%',
     height: '100%',
-    resize: 'none',
     border: 0,
     outline: 'none',
     padding: 0,
   },
-});
-
-export const toggleSourceButton = css({
-  float: 'right',
+  grow: {
+    flexGrow: 1,
+  },
+  markdown: {
+    fontFamily: theme.typography.fontFamily,
+  }
 });

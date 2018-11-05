@@ -41,7 +41,7 @@ it('should build options for the call to markdown based on the component list an
     ComponentOne: (): any => null,
     ComponentTwo: (): any => null,
   };
-  const options = markdownUtils.buildOpts(testComponents, 'ComponentTwo');
+  const options = markdownUtils.buildOpts(testComponents);
   expect(options).toEqual({
     overrides: { ComponentTwo: testComponents.ComponentTwo },
   });
