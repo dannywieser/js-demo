@@ -6,9 +6,12 @@ demoConfigure({
   useLogger: true,
   title: 'Todos w/ @js-demo',
 });
-configure({
-  apiBasePath: 'https://jsonplaceholder.typicode.com'
-});
+
+const localPath = 'http://localhost:3000';
+const livePath = 'https://jsonplaceholder.typicode.com';
+
+//switch to localPath to use local json server via `yarn start-api`
+configure({ apiBasePath: livePath });
 
 const services = {
   todos: {

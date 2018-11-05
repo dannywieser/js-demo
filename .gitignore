@@ -5,3 +5,4 @@ gh-pages
 yarn-error.log
 .DS_Store
 lerna-debug.log
+**/_data/demo
