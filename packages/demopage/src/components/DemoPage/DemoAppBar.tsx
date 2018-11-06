@@ -16,11 +16,11 @@ export interface IDemoAppBarProps extends StyledComponentProps {
   toggleEdit: (event: React.MouseEvent<HTMLButtonElement>) => void;
   title: string;
 }
+
 export const DemoAppBarBase = ({ classes, navOpen, editOpen, toggleMenu, toggleEdit, title }: IDemoAppBarProps) => (
-  <AppBar position="fixed"
-    className={classnames(classes.appBar, {
-      [classes.appBarShift]: navOpen,
-    })}>
+  <AppBar
+    position="fixed"
+    className={classnames(classes.appBar, { [classes.appBarShift]: navOpen })}>
     <Toolbar>
       <IconButton
         color="inherit"
@@ -30,7 +30,7 @@ export const DemoAppBarBase = ({ classes, navOpen, editOpen, toggleMenu, toggleE
       >
         <MenuIcon />
       </IconButton>
-      <Typography color="inherit" className={classes.grow}>{title}</Typography>
+      <Typography variant="h6" color="inherit" className={classes.grow}>{title}</Typography>
       <div>
         <IconButton
           color="inherit"
