@@ -12,8 +12,8 @@ import { styles } from './DemoPage.styles';
 export interface IDemoAppBarProps extends StyledComponentProps {
   navOpen: boolean;
   editOpen: boolean;
-  toggleMenu: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  toggleEdit: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  toggleMenu?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  toggleEdit?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   title: string;
 }
 

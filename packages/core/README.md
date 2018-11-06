@@ -52,3 +52,15 @@ Example file structure:
 Given this file, JSON server will provide an API with an endpoint of **localhost:3000/todos**
 
 Note that at runtime, a copy of the demo-base-data.json file is made for the running demo - JSON-server will update the contents of this file real-time as API operations (create/delete/update) are performed. The source dataset is kept intact through this copy technique. Stopping the JSON server will reset data back to the original dataset.
+
+## Bundling a Demo Project for public deployment
+
+The local demo can easily be run by using the `yarn start-demo` script, but it may be desired to take the application and deploy to another environment for other stakeholders and developers to be able to access it and view the documentation and demos for your components.
+
+There are two things the library includes that facilitate this:
+
+* Running the `yarn bundle-demo` script will package the demo application using webpack and generate the necessary artifacts inside the target projects _dist_ folder. The generated files represent a static app that can be deployed to a web server for viewing.
+* Inside the `docker` folder, you will find a sample Dockerfile (nginx) and nginx configuration that can be used to deploy the demo application as a container.
+
+The demo application will dynamically load any README.md files that contain documentation, and it will also parse the source code `*.types.ts` file to determine interfaces for the components. This requires that the bundled application include the full source code and
+md files (since they are dynamically loaded, they are not included in the main artifact created by webpack)

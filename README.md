@@ -14,7 +14,8 @@ Given an architectural strategy of building many small micro-components or modul
 The utilities here are focused on React and Redux, although some parts are not strictly dependent on those frameworks. The packaging/dev server used is Webpack.
 
 ## Sub Packages
-* **[@js-demo/core](packages/core/README.md)**: simplified webpack configuration, components for rendering markdown documentation containing JSX
+* **[@js-demo/core](packages/core/README.md)**: simplified webpack configuration and dev server
+* **[@js-demo/demo-page](packages/demopage/README.md)**: components for rendering markdown documentation containing JSX
 * **[@js-demo/redux-service-demo](packages/redux-service-demo/README.md)**: Components for creating a demo of a Redux Data Service (note that this has a dependency on @js-demo/core)
 
 ## Examples

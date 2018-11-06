@@ -67,7 +67,7 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
   }
 
   render() {
-    const { title, components, classes, location } = this.props;
+    const { title, components, classes, location, srcFolder } = this.props;
     const { markdown, editOpen, options, navOpen } = this.state;
     const active = location.pathname;
 
@@ -85,6 +85,7 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
             toggleMenu={this.toggleMenu}
             components={components}
             active={active}
+            srcFolder={srcFolder}
           />
           <DemoMarkdown
             navOpen={navOpen}

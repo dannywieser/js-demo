@@ -12,10 +12,29 @@ export interface IMarkdownOpts {
   };
 }
 
+export const mdPathForComponent = (componentName: string, srcFolder: string) => `${srcFolder}/${componentName}/README.md`;
+
 export const buildOpts = (components: IComponentModule): IMarkdownOpts => {
   const componentsReducer = (overrides: IComponentOverrides, component: string) => ({ ...overrides, [component]: components[component] });
   const overrides = Object.keys(components).reduce(componentsReducer, {});
   return { overrides };
+};
+
+async function asyncForEach(array: any[], callback: Function) {
+  while (array.length > 0) {
+    await callback(array.pop());
+  }
+}
+
+export const findDocumentedComponents = async (components: IComponentModule, srcFolder: string): Promise<string[]> => {
+  const documented: string[] = [];
+  await asyncForEach(Object.keys(components), async (component: string) => {
+    const { ok } = await fetch(mdPathForComponent(component, srcFolder));
+    if (ok) {
+      documented.push(component);
+    }
+  });
+  return documented.sort();
 };
 
 export const fetchText = async (path: string, errorString = 'error') => {

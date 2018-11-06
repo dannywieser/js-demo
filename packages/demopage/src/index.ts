@@ -1,2 +1,2 @@
 export * from './utilities';
-export * from './components/DemoPage';
+export * from './components/';

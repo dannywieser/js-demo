@@ -38,18 +38,6 @@ Where:
 
 Then run `yarn start-demo` to start the local development server (part of [@js-demo/core](../core/README.md))
 
-## Bundling a Demo Project for public deployment
-
-The local demo can easily be run by using the `yarn start-demo` script, but it may be desired to take the application and deploy to another environment for other stakeholders and developers to be able to access it and view the documentation and demos for your components.
-
-There are two things the library includes that facilitate this:
-
-* Running the `yarn bundle-demo` script will package the demo application using webpack and generate the necessary artifacts inside the target projects _dist_ folder. The generated files represent a static app that can be deployed to a web server for viewing.
-* Inside the `docker` folder, you will find a sample Dockerfile (nginx) and nginx configuration that can be used to deploy the demo application as a container.
-
-The demo application will dynamically load any README.md files that contain documentation, and it will also parse the source code `*.types.ts` file to determine interfaces for the components. This requires that the bundled application include the full source code and
-md files (since they are dynamically loaded, they are not included in the main artifact created by webpack)
-
 ## Markdown to JSX Demo Page Component
 
 ### Expected Project Folder Structure
@@ -71,7 +59,7 @@ Example:
           |-> ... // other source files
 ```
 
-### DemoPage
+### DemoApp
 
 Given the structure above, you can setup your _demo/index.tsx to render a demo page with component navigation using the ***DemoPage*** component
 
@@ -84,11 +72,11 @@ This component will render a demo page for one or more components, given the fol
 ```typescript
 import * as React from 'react';
 import { render } from 'react-dom';
-import { DemoPage } from '@js-demo/demopage';
+import { DemoApp } from '@js-demo/demopage';
 import * as components from '../src/components';
 
 const title = 'My Awesome React Component';
-render(<DemoPage
+render(<DemoApp
   components={components}
   srcFolder={`src/components`}
   readme={'README.md'}
@@ -97,18 +85,6 @@ render(<DemoPage
 );
 ```
 
-### ReduxDemoPage
+### ReduxDemoApp
 
-Same usage as DemoPage, but for usage when a Redux store is required for one or more of the components included in the demo.
-
-#### Sub Components
-
-The DemoPage component has the following child components that are used to render the demo page:
-
-***DemoPageNav***
-
-Creates the sidebar navigation for navigating through the different components included in a project
-
-***DemoPageViewSource***
-
-Adds ability to toggle hide/show of source markdown for the component, with live editing of the markdown.
+Same usage as DemoApp, but for usage when a Redux store is required for one or more of the components included in the demo.
