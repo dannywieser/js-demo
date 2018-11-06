@@ -18,7 +18,7 @@ const drawerHeader = (theme: any) => ({
   alignItems: 'center',
   padding: '0 8px',
   ...theme.mixins.toolbar,
-})
+});
 
 export const styles = (theme: any) => ({
   root: {
@@ -98,6 +98,7 @@ export const styles = (theme: any) => ({
     ...viewSourceColor,
     padding: theme.spacing.unit * 2,
     height: '100%',
+    overflow: 'auto',
   },
   demoSource: {
     ...viewSourceColor,
@@ -105,12 +106,12 @@ export const styles = (theme: any) => ({
     height: '100%',
     border: 0,
     outline: 'none',
-    padding: 0,
+    fontFamily: theme.typography.fontFamily,
   },
   grow: {
     flexGrow: 1,
   },
   markdown: {
     fontFamily: theme.typography.fontFamily,
-  }
+  },
 });

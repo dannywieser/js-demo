@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import {  withRouter, RouteComponentProps } from 'react-router-dom';
 import { styles } from './DemoPage.styles';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import autobind from 'autobind-decorator';
 import { StyledComponentProps, withStyles } from '@material-ui/core';
-import { DemoAppBar, DemoPageNavDrawer, DemoViewSourceDrawer, DemoMarkdown} from './index';
+import { DemoAppBar, DemoNavDrawer, DemoViewSourceDrawer, DemoMarkdown } from './index';
 import {
   IComponentModule,
   IMarkdownOpts,
@@ -12,7 +12,7 @@ import {
   buildOpts,
 } from '../../utilities/';
 
-export interface IDemoPageProps extends StyledComponentProps, RouteComponentProps {
+export interface IDemoPageProps extends StyledComponentProps, Partial<RouteComponentProps> {
   components: IComponentModule;
   readme: string;
   srcFolder: string;
@@ -28,28 +28,27 @@ export interface IDemoPageState {
 
 export const getActiveComponent = (pathName: string) => (pathName === '/') ? undefined : pathName;
 
-export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageState> {
+export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageState, RouteComponentProps> {
   constructor(props: any) {
     super(props);
     this.state = { markdown: '', editOpen: false, options: null, navOpen: false };
   }
 
-  async componentWillMount() {
+  private async loadMarkdownAndOpts() {
     const { srcFolder, readme, components, location } = this.props;
     const activeComponent = getActiveComponent(location.pathname);
     const src = activeComponent ? `${srcFolder}/${activeComponent}/README.md` : readme;
-        console.log('activeComponent', activeComponent, src);
     const options = buildOpts(components);
     const markdown = await loadMarkdown(src);
     this.setState({ markdown, options });
   }
 
-  async componentWillReceiveProps({ components, location, srcFolder, readme}: IDemoPageProps) {
-    const activeComponent = getActiveComponent(location.pathname);
-    const src = activeComponent ? `${srcFolder}/${activeComponent}/README.md` : readme;
-    const options = buildOpts(components);
-    const markdown = await loadMarkdown(src);
-    this.setState({ markdown, options });
+  async componentWillMount() {
+    await this.loadMarkdownAndOpts();
+  }
+
+  async componentWillReceiveProps() {
+    this.loadMarkdownAndOpts();
   }
 
   @autobind
@@ -67,12 +66,12 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
   toggleMenu() {
     const { navOpen } = this.state;
     this.setState({ navOpen: !navOpen });
-  };
+  }
 
   getContentClassName() {
     const { classes } = this.props;
     const { editOpen, navOpen } = this.state;
-    return classNames(classes.content, {
+    return classnames(classes.content, {
       [classes.contentShiftMenu]: navOpen && !editOpen,
       [classes.contentShiftSource]: editOpen && !navOpen,
       [classes.contentShiftBoth]: editOpen && navOpen,
@@ -92,7 +91,7 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
             toggleEdit={this.toggleEdit}
             toggleMenu={this.toggleMenu}
           />
-          <DemoPageNavDrawer
+          <DemoNavDrawer
             navOpen={navOpen}
             toggleMenu={this.toggleMenu}
             components={components}

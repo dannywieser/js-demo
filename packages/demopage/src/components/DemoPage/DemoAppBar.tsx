@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -18,7 +18,7 @@ export interface IDemoAppBarProps extends StyledComponentProps {
 }
 export const DemoAppBarBase = ({ classes, navOpen, editOpen, toggleMenu, toggleEdit, title }: IDemoAppBarProps) => (
   <AppBar position="fixed"
-    className={classNames(classes.appBar, {
+    className={classnames(classes.appBar, {
       [classes.appBarShift]: navOpen,
     })}>
     <Toolbar>
@@ -26,7 +26,7 @@ export const DemoAppBarBase = ({ classes, navOpen, editOpen, toggleMenu, toggleE
         color="inherit"
         aria-label="Open drawer"
         onClick={toggleMenu}
-        className={classNames(classes.menuButton, navOpen && classes.hide)}
+        className={classnames(classes.menuButton, navOpen && classes.hide)}
       >
         <MenuIcon />
       </IconButton>
@@ -35,7 +35,7 @@ export const DemoAppBarBase = ({ classes, navOpen, editOpen, toggleMenu, toggleE
         <IconButton
           color="inherit"
           onClick={toggleEdit}
-          className={classNames(classes.editButton, editOpen && classes.hide)}>
+          className={classnames(classes.editButton, editOpen && classes.hide)}>
           <EditIcon />
         </IconButton>
       </div>

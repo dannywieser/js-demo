@@ -1,6 +1,6 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import { DemoPageNavDrawerBase, IDemoPageNavProps } from '../DemoPageNavDrawer';
+import { DemoNavDrawerBase, IDemoNavDrawerProps } from '../DemoNavDrawer';
 import { styles} from '../DemoPage.styles';
 
 const testComponents = {
@@ -10,8 +10,8 @@ const testComponents = {
 const toggleMenu = jest.fn();
 const navOpen = false;
 
-function shallowComponent(): ShallowWrapper<IDemoPageNavProps> {
-  return shallow(<DemoPageNavDrawerBase
+function shallowComponent(): ShallowWrapper<IDemoNavDrawerProps> {
+  return shallow(<DemoNavDrawerBase
     components={testComponents}
     toggleMenu={toggleMenu}
     navOpen={navOpen}

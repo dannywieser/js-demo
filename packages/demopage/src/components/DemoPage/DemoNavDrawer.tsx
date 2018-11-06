@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -12,7 +12,7 @@ import { StyledComponentProps, withStyles } from '@material-ui/core';
 import { IComponentModule } from '../../utilities/markdown';
 import { styles } from './DemoPage.styles';
 
-export interface IDemoPageNavProps extends StyledComponentProps {
+export interface IDemoNavDrawerProps extends StyledComponentProps {
   components: IComponentModule;
   toggleMenu: (event: React.MouseEvent<HTMLButtonElement>) => void;
   navOpen: boolean;
@@ -29,7 +29,7 @@ export interface IRouterButtonProps {
 }
 
 export const RouterButton = Button as any;
-const RouterLink = (props: IRouterButtonProps) => <Link to="/" {...props} />
+const RouterLink = (props: IRouterButtonProps) => <Link to="/" {...props} />;
 
 const getComponentNames = (components: IComponentModule): string[] => Object.keys(components);
 const LinkListItem = ({ name, to, styles }: IRouterButtonProps) => (
@@ -40,7 +40,7 @@ const LinkListItem = ({ name, to, styles }: IRouterButtonProps) => (
   </ListItem>
 );
 
-export const DemoPageNavDrawerBase = ({ toggleMenu, classes, navOpen, components }: IDemoPageNavProps) => (
+export const DemoNavDrawerBase = ({ toggleMenu, classes, navOpen, components }: IDemoNavDrawerProps) => (
   <Drawer
     className={classes.menuDrawer}
     variant="persistent"
@@ -56,9 +56,9 @@ export const DemoPageNavDrawerBase = ({ toggleMenu, classes, navOpen, components
     <Divider />
     <List className={classes.noPadding}>
       <LinkListItem name="README" to="/" key={name} styles={classes.noPadding}/>
-      {getComponentNames(components).map((name) => (<LinkListItem key={name} name={name} to={name} styles={classes.noPadding}/>))}
+      {getComponentNames(components).map(name => <LinkListItem key={name} name={name} to={name} styles={classes.noPadding}/>)}
     </List>
   </Drawer>
 );
 
-export const DemoPageNavDrawer = withStyles(styles)(DemoPageNavDrawerBase);
+export const DemoNavDrawer = withStyles(styles)(DemoNavDrawerBase);

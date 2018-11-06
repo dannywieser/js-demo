@@ -43,6 +43,9 @@ it('should build options for the call to markdown based on the component list an
   };
   const options = markdownUtils.buildOpts(testComponents);
   expect(options).toEqual({
-    overrides: { ComponentTwo: testComponents.ComponentTwo },
+    overrides: {
+      ComponentOne: testComponents.ComponentOne,
+      ComponentTwo: testComponents.ComponentTwo,
+    },
   });
 });
