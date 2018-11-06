@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {  withRouter, RouteComponentProps } from 'react-router-dom';
 import { styles } from './DemoPage.styles';
-import classnames from 'classnames';
 import autobind from 'autobind-decorator';
 import { StyledComponentProps, withStyles } from '@material-ui/core';
 import { DemoAppBar, DemoNavDrawer, DemoViewSourceDrawer, DemoMarkdown } from './index';
@@ -34,8 +33,7 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
     this.state = { markdown: '', editOpen: false, options: null, navOpen: false };
   }
 
-  private async loadMarkdownAndOpts() {
-    const { srcFolder, readme, components, location } = this.props;
+  private async loadMarkdownAndOpts({ srcFolder, readme, components, location }: IDemoPageProps) {
     const activeComponent = getActiveComponent(location.pathname);
     const src = activeComponent ? `${srcFolder}/${activeComponent}/README.md` : readme;
     const options = buildOpts(components);
@@ -44,11 +42,11 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
   }
 
   async componentWillMount() {
-    await this.loadMarkdownAndOpts();
+    await this.loadMarkdownAndOpts(this.props);
   }
 
-  async componentWillReceiveProps() {
-    this.loadMarkdownAndOpts();
+  async componentWillReceiveProps(props: IDemoPageProps) {
+    this.loadMarkdownAndOpts(props);
   }
 
   @autobind
@@ -68,19 +66,10 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
     this.setState({ navOpen: !navOpen });
   }
 
-  getContentClassName() {
-    const { classes } = this.props;
-    const { editOpen, navOpen } = this.state;
-    return classnames(classes.content, {
-      [classes.contentShiftMenu]: navOpen && !editOpen,
-      [classes.contentShiftSource]: editOpen && !navOpen,
-      [classes.contentShiftBoth]: editOpen && navOpen,
-    });
-  }
-
   render() {
-    const { title, components, classes } = this.props;
+    const { title, components, classes, location } = this.props;
     const { markdown, editOpen, options, navOpen } = this.state;
+    const active = location.pathname;
 
     return (
         <div className={classes.root}>
@@ -95,9 +84,11 @@ export class DemoPageBase extends React.Component <IDemoPageProps, IDemoPageStat
             navOpen={navOpen}
             toggleMenu={this.toggleMenu}
             components={components}
+            active={active}
           />
           <DemoMarkdown
-            layoutClass={this.getContentClassName()}
+            navOpen={navOpen}
+            editOpen={editOpen}
             markdown={markdown}
             options={options}
           />

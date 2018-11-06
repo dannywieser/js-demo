@@ -1,3 +1,6 @@
+// fix issues with internal usage of Typography inside Drawer component
+(<any> window).__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+
 const menuDrawerWidth = 240;
 const sourceDrawerWidth = 340;
 

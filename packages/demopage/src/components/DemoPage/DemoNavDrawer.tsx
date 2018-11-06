@@ -12,35 +12,41 @@ import { StyledComponentProps, withStyles } from '@material-ui/core';
 import { IComponentModule } from '../../utilities/markdown';
 import { styles } from './DemoPage.styles';
 
-export interface IDemoNavDrawerProps extends StyledComponentProps {
+export interface IDemoNavDrawerProps extends Partial<StyledComponentProps> {
   components: IComponentModule;
   toggleMenu: (event: React.MouseEvent<HTMLButtonElement>) => void;
   navOpen: boolean;
-}
-
-export interface IComponentListProps {
-  components: IComponentModule;
+  active: string;
 }
 
 export interface IRouterButtonProps {
   to: string;
   name: string;
-  styles: string;
+  selected: boolean;
 }
 
 export const RouterButton = Button as any;
 const RouterLink = (props: IRouterButtonProps) => <Link to="/" {...props} />;
 
 const getComponentNames = (components: IComponentModule): string[] => Object.keys(components);
-const LinkListItem = ({ name, to, styles }: IRouterButtonProps) => (
-  <ListItem disableGutters={true} className={styles}>
-    <RouterButton fullWidth={true} to={to} component={RouterLink} name={name}>
+const LinkListItem = ({ name, to, selected }: IRouterButtonProps) => (
+  <ListItem disableGutters={true} style={ { padding: 0 }} selected={selected}>
+    <RouterButton
+      fullWidth={true}
+      to={to}
+      component={RouterLink}
+      name={name}
+      style={{ textTransform: 'none' }}
+      disabled={selected}
+    >
       {name}
     </RouterButton>
   </ListItem>
 );
 
-export const DemoNavDrawerBase = ({ toggleMenu, classes, navOpen, components }: IDemoNavDrawerProps) => (
+export const isSelected = (active: string, target: string = '') => active === `/${target}`;
+
+export const DemoNavDrawerBase = ({ toggleMenu, classes, navOpen, components, active }: IDemoNavDrawerProps) => (
   <Drawer
     className={classes.menuDrawer}
     variant="persistent"
@@ -55,8 +61,8 @@ export const DemoNavDrawerBase = ({ toggleMenu, classes, navOpen, components }: 
     </div>
     <Divider />
     <List className={classes.noPadding}>
-      <LinkListItem name="README" to="/" key={name} styles={classes.noPadding}/>
-      {getComponentNames(components).map(name => <LinkListItem key={name} name={name} to={name} styles={classes.noPadding}/>)}
+      <LinkListItem name="README" to="/" key={name} selected={isSelected(active)}/>
+      {getComponentNames(components).map(name => <LinkListItem key={name} name={name} to={name} selected={isSelected(active, name)}/>)}
     </List>
   </Drawer>
 );

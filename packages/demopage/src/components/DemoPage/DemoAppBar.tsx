@@ -30,7 +30,7 @@ export const DemoAppBarBase = ({ classes, navOpen, editOpen, toggleMenu, toggleE
       >
         <MenuIcon />
       </IconButton>
-      <Typography variant="h6" color="inherit" className={classes.grow}>{title}</Typography>
+      <Typography color="inherit" className={classes.grow}>{title}</Typography>
       <div>
         <IconButton
           color="inherit"
