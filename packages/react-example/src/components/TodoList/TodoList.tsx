@@ -1,13 +1,15 @@
 import autobindDecorator from 'autobind-decorator';
 import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
-import * as styles from './TodoList.styles';
+import { StyledComponentProps, withStyles } from '@material-ui/core';
+import { styles } from './TodoList.styles';
 import { connect } from 'react-redux';
+import List from '@material-ui/core/List';
 import { todos, IApiState } from '@js-demo/redux-example';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { TodoItem, AddNewTodoItem  } from './TodoList.functional';
 
-interface ITodoListProps {
+interface ITodoListProps extends StyledComponentProps {
   todosArray: todos.ITodo[];
   api: IApiState;
 }
@@ -65,13 +67,13 @@ export class TodoListBase extends React.Component<ITodosListAllProps> {
 
   renderList() {
     const { newTodoText } = this.state;
-    const { todosArray } = this.props;
+    const { todosArray, classes } = this.props;
     const { api } = this.props;
     const { updating = '' } = api;
     return (
-      <div>
-        <h1 className={styles.centeredText}>{'Todos'}</h1>
-        <ul className={styles.todoList}>
+      <div className={classes.root}>
+        <h1>{'Todos'}</h1>
+        <List>
           { todosArray.map((todo: todos.ITodo) => (
             <TodoItem
               key={todo.id}
@@ -88,7 +90,7 @@ export class TodoListBase extends React.Component<ITodosListAllProps> {
             onChanged={this.handleFieldUpdate}
             addLabel={'Add Todo'}
           />
-        </ul>
+        </List>
       </div>
     );
   }
@@ -120,4 +122,4 @@ function mapDispatchToProps(dispatch: Dispatch) {
 
 export const TodoListContainer = connect<ITodoListProps, IDispatchProps>(mapStateToProps, mapDispatchToProps)(TodoListBase);
 
-export const TodoList = TodoListContainer;
+export const TodoList = withStyles(styles)(TodoListContainer);

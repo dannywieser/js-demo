@@ -1,12 +1,13 @@
 import * as React from 'react';
-import * as styles from './TodoList.styles';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import { todos } from '@js-demo/redux-example';
 
 interface TodoUpdatingProps {
   isUpdating: boolean;
 }
 export const TodoUpdating = ({ isUpdating }: TodoUpdatingProps) =>
-  isUpdating ? (<span className={styles.right} />) : null;
+  isUpdating ? (<span />) : null;
 
 interface TodoDeleteButtonProps {
   isUpdating: boolean;
@@ -15,7 +16,6 @@ interface TodoDeleteButtonProps {
 export const TodoDeleteButton = ({ isUpdating, clickHandler }: TodoDeleteButtonProps) => {
   return isUpdating ? null :
   (<button
-      className={styles.right}
       onClick={clickHandler}
     />);
 };
@@ -32,13 +32,13 @@ export const TodoAddButton = ({ isUpdating, clickHandler, addLabel }: TodoAddBut
     />);
 };
 
-export const CenteredSpinner = () => (<div><span className={styles.centered} /></div>);
+export const CenteredSpinner = () => (<div><span/></div>);
 
 const getTodoClasses = (todo: todos.ITodo, updating: boolean) => {
-  const { completed } = todo;
-  const completedClass = completed ? styles.complete : styles.incomplete;
-  const loadingClass = updating ? styles.loading : '';
-  return `${completedClass} ${styles.todo} ${loadingClass}`;
+  //const { completed } = todo;
+  //const completedClass = completed ? styles.complete : styles.incomplete;
+  //const loadingClass = updating ? styles.loading : '';
+  return ''; //`${loadingClass}`;
 };
 
 interface TodoItemProps {
@@ -50,9 +50,8 @@ interface TodoItemProps {
 export const TodoItem = ({ todo, toggleTodo, deleteTodo, isUpdating }: TodoItemProps) => {
   const { title } = todo;
   return (
-    <li
-      className={getTodoClasses(todo, isUpdating)}>
-        <span onClick={toggleTodo}>{title}</span>
+    <ListItem button>
+        <ListItemText onClick={toggleTodo}>{title}</ListItemText>
         <TodoUpdating
           isUpdating={isUpdating}
         />
@@ -60,7 +59,7 @@ export const TodoItem = ({ todo, toggleTodo, deleteTodo, isUpdating }: TodoItemP
           isUpdating={isUpdating}
           clickHandler={deleteTodo}
         />
-    </li>);
+    </ListItem>);
 };
 
 interface AddNewTodoItemProps {
@@ -72,8 +71,8 @@ interface AddNewTodoItemProps {
 }
 export const AddNewTodoItem = ({ newText, isUpdating, onChanged, addTodo, addLabel }: AddNewTodoItemProps) => {
   return (
-    <li className={styles.todo}>
-      <div className={styles.inline}>
+    <li>
+      <div>
 
         <TodoUpdating isUpdating={isUpdating} />
         <TodoAddButton
