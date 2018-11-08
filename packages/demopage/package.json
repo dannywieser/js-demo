@@ -38,7 +38,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
-  "gitHead": "a4518e2f44233f86d3a83e3630293a349be01876",
+  "gitHead": "48ebb2860893c28ae5664a669dbaee638c753b09",
   "devDependencies": {
     "@js-demo/core": "^0.2.1"
   }
