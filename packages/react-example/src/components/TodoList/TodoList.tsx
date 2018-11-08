@@ -2,12 +2,20 @@ import autobindDecorator from 'autobind-decorator';
 import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { StyledComponentProps, withStyles } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Checkbox from '@material-ui/core/Checkbox';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { styles } from './TodoList.styles';
 import { connect } from 'react-redux';
-import List from '@material-ui/core/List';
 import { todos, IApiState } from '@js-demo/redux-example';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { TodoItem, AddNewTodoItem  } from './TodoList.functional';
+
+// import { TodoItem, AddNewTodoItem  } from './TodoList.functional';
 
 interface ITodoListProps extends StyledComponentProps {
   todosArray: todos.ITodo[];
@@ -72,24 +80,24 @@ export class TodoListBase extends React.Component<ITodosListAllProps> {
     const { updating = '' } = api;
     return (
       <div className={classes.root}>
-        <h1>{'Todos'}</h1>
+        <Typography variant="h6">{'Todos'}</Typography>
         <List>
-          { todosArray.map((todo: todos.ITodo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              isUpdating={updating === todo.id}
-              deleteTodo={() => this.deleteTodo(todo.id)}
-              toggleTodo={() => this.toggleTodo(todo)}
-            />))
-          }
-          <AddNewTodoItem
-            isUpdating={updating === 'new'}
-            newText={newTodoText}
-            addTodo={this.addTodo}
-            onChanged={this.handleFieldUpdate}
-            addLabel={'Add Todo'}
-          />
+          {todosArray.map((todo) => (
+            <ListItem button key={todo.id} onClick={() => this.toggleTodo(todo)}>
+              <Checkbox
+                checked={todo.completed}
+                tabIndex={-1}
+                disableRipple
+              />
+              <ListItemText primary={todo.title} />
+              <ListItemSecondaryAction>
+                <IconButton aria-label="Delete"
+                  onClick={() => this.deleteTodo(todo.id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
         </List>
       </div>
     );
