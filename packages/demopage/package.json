@@ -1,6 +1,6 @@
 {
   "name": "@js-demo/demopage",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React components for rendering component demos based on Markdown Documentation",
   "main": "dist/index.js",
   "repository": {
@@ -40,6 +40,6 @@
   },
   "gitHead": "a4518e2f44233f86d3a83e3630293a349be01876",
   "devDependencies": {
-    "@js-demo/core": "^0.2.0"
+    "@js-demo/core": "^0.2.1"
   }
 }

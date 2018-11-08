@@ -1,6 +1,6 @@
 {
   "name": "@js-demo/redux-example",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Example Redux Data Service utilizing @demo-utils/core and @demo-utils/redux-service-demo",
   "main": "dist/index.js",
   "author": "danny.wieser@gmail.com",
@@ -22,7 +22,7 @@
     "redux-service-util": "1.1.0"
   },
   "devDependencies": {
-    "@js-demo/redux-service-demo": "^0.2.0"
+    "@js-demo/redux-service-demo": "^0.2.1"
   },
   "gitHead": "a4518e2f44233f86d3a83e3630293a349be01876"
 }
