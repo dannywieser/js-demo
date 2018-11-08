@@ -82,7 +82,7 @@ export class TodoListBase extends React.Component<ITodosListAllProps> {
       <div className={classes.root}>
         <Typography variant="h6">{'Todos'}</Typography>
         <List>
-          {todosArray.map((todo) => (
+          {todosArray.map(todo => (
             <ListItem button key={todo.id} onClick={() => this.toggleTodo(todo)}>
               <Checkbox
                 checked={todo.completed}

@@ -63,7 +63,7 @@ export class DemoNavDrawerBase extends React.Component<IDemoNavDrawerProps, IDem
   }
 
   render() {
-    const { classes, toggleMenu, navOpen, active } = this.props
+    const { classes, toggleMenu, navOpen, active } = this.props;
     const { documentedComponents } = this.state;
     return (
       <Drawer
@@ -86,6 +86,6 @@ export class DemoNavDrawerBase extends React.Component<IDemoNavDrawerProps, IDem
       </Drawer>
     );
   }
-};
+}
 
 export const DemoNavDrawer = withStyles(styles)(DemoNavDrawerBase);

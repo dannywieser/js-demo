@@ -9,7 +9,6 @@
     "clean": "rimraf dist coverage yarn-error.log typings _demo/dist",
     "start": "yarn clean && tsc -w",
     "build": "yarn clean && tsc",
-    "test": "jest --coverage",
     "lint": "tslint --project \".\""
   },
   "dependencies": {

@@ -28,6 +28,12 @@ module.exports = require('@js-demo/core/webpack/webpack-demo').demoConfig();
 
 These helpers aren't specific to React, they could be used to get a local running dev server for any type of javascript/webpack-bundled component.
 
+At the moment, the following loaders are included in the default config:
+* Typescript (ts-loader)
+* raw-loader
+* css-loader
+* svg-inline-loader
+
 ### Shortcut script for running JSON-server mock API
 
 It may be useful during demo to utilize a simple mock REST api, which can quickly be setup using [JSON-Server]:(https://github.com/typicode/json-server)
@@ -41,10 +47,8 @@ Example file structure:
 
 ```{
   "todos": [
-    { "id": 1, "title": "clone this repo to a folder with the name of your new component", "completed": false},
-    { "id": 2, "title": "use the todos component as a guideline for creating a skeleton of your new component", "completed": false},
-    { "id": 3, "title": "remove the .git folder and re-initialize as a new git repo", "completed": false},
-    { "id": 4, "title": "update package.json with your project/repo details", "completed": false}
+    { "id": 1, "title": "todo 1", "completed": false },
+    { "id": 2, "title": "todo 2", "completed": true }
   ]
 }
 ```
